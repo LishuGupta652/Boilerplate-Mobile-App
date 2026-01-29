@@ -12,7 +12,8 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final session = ref.watch(authSessionStreamProvider).valueOrNull;
-    final flags = ref.watch(featureFlagsProvider).valueOrNull ?? const {};
+    final flags =
+        ref.watch(featureFlagsProvider).valueOrNull ?? const <String, bool>{};
 
     return ListView(
       padding: const EdgeInsets.all(20),

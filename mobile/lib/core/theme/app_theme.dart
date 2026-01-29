@@ -6,6 +6,7 @@ class AppTheme {
   static ThemeData light(ColorScheme scheme) {
     return FlexThemeData.light(
       colorScheme: scheme,
+      useMaterial3: true,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 14,
       appBarStyle: FlexAppBarStyle.primary,
@@ -30,6 +31,7 @@ class AppTheme {
   static ThemeData dark(ColorScheme scheme) {
     return FlexThemeData.dark(
       colorScheme: scheme,
+      useMaterial3: true,
       surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
       blendLevel: 20,
       appBarStyle: FlexAppBarStyle.material,

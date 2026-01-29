@@ -32,3 +32,9 @@ RBAC is enforced via `RolesGuard` and `PermissionsGuard`. Permissions are pulled
 ```bash
 npm run test
 ```
+
+## Docker
+```bash
+docker build -t mobile-backend .
+docker run --env-file .env -p 4000:4000 mobile-backend
+```
