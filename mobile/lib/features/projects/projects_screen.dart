@@ -19,6 +19,7 @@ class ProjectsScreen extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () => ref.read(projectsControllerProvider.notifier).load(),
         child: ListView(
+          physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.all(20),
           children: [
             Text('Projects', style: Theme.of(context).textTheme.headlineMedium),
