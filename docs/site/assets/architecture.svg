@@ -1,0 +1,22 @@
+<svg width="920" height="360" viewBox="0 0 920 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="920" height="360" rx="28" fill="#0F172A"/>
+
+  <rect x="60" y="70" width="250" height="220" rx="20" fill="#111F3A" stroke="#1F2937"/>
+  <text x="90" y="110" fill="#F8FAFC" font-family="Space Grotesk" font-size="16">Flutter Mobile</text>
+  <text x="90" y="140" fill="#94A3B8" font-family="Space Grotesk" font-size="12">Auth + RBAC UI</text>
+  <text x="90" y="165" fill="#94A3B8" font-family="Space Grotesk" font-size="12">Offline cache</text>
+  <text x="90" y="190" fill="#94A3B8" font-family="Space Grotesk" font-size="12">Feature flags</text>
+
+  <rect x="360" y="110" width="200" height="140" rx="20" fill="#111F3A" stroke="#1F2937"/>
+  <text x="390" y="150" fill="#F8FAFC" font-family="Space Grotesk" font-size="16">NestJS API</text>
+  <text x="390" y="178" fill="#94A3B8" font-family="Space Grotesk" font-size="12">JWT + RBAC</text>
+  <text x="390" y="200" fill="#94A3B8" font-family="Space Grotesk" font-size="12">/projects + /flags</text>
+
+  <rect x="620" y="70" width="240" height="220" rx="20" fill="#111F3A" stroke="#1F2937"/>
+  <text x="650" y="110" fill="#F8FAFC" font-family="Space Grotesk" font-size="16">Kinde</text>
+  <text x="650" y="140" fill="#94A3B8" font-family="Space Grotesk" font-size="12">OIDC + JWT</text>
+  <text x="650" y="165" fill="#94A3B8" font-family="Space Grotesk" font-size="12">Roles + Permissions</text>
+
+  <path d="M310 180 L360 180" stroke="#38BDF8" stroke-width="3"/>
+  <path d="M560 180 L620 180" stroke="#2DD4BF" stroke-width="3"/>
+</svg>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mobile Boilerplate Docs</title>
+    <meta name="description" content="Documentation for the Mobile Boilerplate (Flutter + NestJS) with KindeAuth and RBAC." />
+    <link rel="icon" href="./assets/logo.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-bar">
+        <div class="brand">
+          <img src="./assets/logo.svg" alt="Mobile Boilerplate" />
+          <span>Mobile Boilerplate Docs</span>
+        </div>
+        <nav class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#quickstart">Quickstart</a>
+          <a href="#mobile">Mobile App</a>
+          <a href="#backend">Backend</a>
+          <a href="#guides">Guides</a>
+          <a href="#deploy">Deploy</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="ghost" href="https://github.com/LishuGupta652/Boilerplate-Mobile-App" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="primary" href="#quickstart">Get Started</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="overview">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="badge">Flutter + NestJS</span>
+            <h1>Launch-ready mobile foundation with KindeAuth, RBAC, and offline-first defaults.</h1>
+            <p>
+              This documentation covers the Flutter mobile app, NestJS backend, environment setup, and release process
+              so you can ship faster with confidence.
+            </p>
+            <div class="hero-actions">
+              <a class="primary" href="#quickstart">Start building</a>
+              <a class="ghost" href="#architecture">View architecture</a>
+            </div>
+            <div class="hero-meta">
+              <div>
+                <p class="meta-title">Site URL</p>
+                <p class="mono">https://mobile-boilerplate.lishugupta.in</p>
+              </div>
+              <div>
+                <p class="meta-title">Repository</p>
+                <p class="mono">github.com/LishuGupta652/Boilerplate-Mobile-App</p>
+              </div>
+            </div>
+          </div>
+          <div class="hero-panel">
+            <img src="./assets/hero-illustration.svg" alt="Architecture overview" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="quickstart">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Quickstart</h2>
+            <p>Get the backend and mobile app running locally in minutes.</p>
+          </div>
+          <div class="grid two">
+            <div class="card">
+              <h3>Backend</h3>
+              <p>Runs on NestJS with Kinde JWT authentication.</p>
+              <pre><code>cd backend
+cp .env.example .env
+npm install
+npm run start:dev</code></pre>
+            </div>
+            <div class="card">
+              <h3>Mobile App</h3>
+              <p>Flutter app with modern UI, RBAC gating, and offline caching.</p>
+              <pre><code>cd mobile
+cp .env.example assets/.env
+flutter pub get
+flutter run -d ios</code></pre>
+            </div>
+          </div>
+          <div class="callout">
+            <strong>Android emulator tip:</strong> set <span class="mono">API_BASE_URL=http://10.0.2.2:4000</span> in <span class="mono">mobile/assets/.env</span>.
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted" id="architecture">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Architecture overview</h2>
+            <p>Frontend and backend are designed to scale independently with clear service boundaries.</p>
+          </div>
+          <div class="card wide">
+            <img src="./assets/architecture.svg" alt="Architecture diagram" />
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mobile">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Mobile App</h2>
+            <p>Flutter 3 app with Riverpod state, GoRouter navigation, and FlexColorScheme theming.</p>
+          </div>
+
+          <div class="grid three">
+            <div class="feature">
+              <img src="./assets/icon-shield.svg" alt="Security" />
+              <h3>Security</h3>
+              <p>Tokens stored in secure storage, auto-refresh on expiry, and HTTPS enforced in release.</p>
+            </div>
+            <div class="feature">
+              <img src="./assets/icon-offline.svg" alt="Offline" />
+              <h3>Offline-first</h3>
+              <p>Dio cache interceptor + Hive storage keep the app functional without connectivity.</p>
+            </div>
+            <div class="feature">
+              <img src="./assets/icon-theme.svg" alt="Theming" />
+              <h3>Custom theme</h3>
+              <p>Change accent colors and theme mode from the Profile screen, persisted locally.</p>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Key packages</h3>
+              <ul>
+                <li>flutter_riverpod for state and dependency injection</li>
+                <li>go_router for navigation + RBAC gating</li>
+                <li>dio + dio_smart_retry for networking</li>
+                <li>hive + hive_flutter for caching</li>
+                <li>flutter_appauth for Kinde OIDC</li>
+                <li>permission_handler for system permissions</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>App structure</h3>
+              <pre><code>mobile/lib/
+  app.dart
+  core/
+    config/
+    network/
+    routing/
+    services/
+    storage/
+    theme/
+  features/
+    auth/
+    home/
+    projects/
+    profile/
+  widgets/</code></pre>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>App icons + splash</h3>
+              <p>Assets live in <span class="mono">mobile/assets/images</span>.</p>
+              <pre><code>dart run flutter_launcher_icons
+dart run flutter_native_splash:create</code></pre>
+            </div>
+            <div class="card">
+              <h3>Permissions</h3>
+              <p>Configure permissions in:</p>
+              <ul>
+                <li><span class="mono">mobile/ios/Runner/Info.plist</span></li>
+                <li><span class="mono">mobile/android/app/src/main/AndroidManifest.xml</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted" id="backend">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Backend</h2>
+            <p>NestJS API with JWT validation against Kinde and built-in RBAC guards.</p>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Core modules</h3>
+              <ul>
+                <li>AuthModule with JWT strategy + guards</li>
+                <li>ProjectsModule for RBAC-gated resources</li>
+                <li>FeatureFlagsModule for rollout control</li>
+                <li>HealthModule for uptime checks</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Endpoints</h3>
+              <pre><code>GET /health
+GET /me
+GET /flags
+GET /projects
+POST /projects</code></pre>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>RBAC:</strong> add <span class="mono">roles</span> and <span class="mono">permissions</span> claims in your Kinde API tokens to unlock protected routes.
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="guides">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Guides</h2>
+            <p>Operational guidance for auth, offline sync, and feature flags.</p>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Kinde setup</h3>
+              <ol>
+                <li>Create a Kinde app and enable PKCE.</li>
+                <li>Add redirect URIs:</li>
+              </ol>
+              <pre><code>com.example.mobileapp://login-callback
+com.example.mobileapp://logout-callback</code></pre>
+              <p>Add API permissions: <span class="mono">projects:read</span>, <span class="mono">projects:write</span>.</p>
+            </div>
+            <div class="card">
+              <h3>Offline strategy</h3>
+              <p>GET responses are cached in Hive. When offline, cached responses are served automatically.</p>
+              <ul>
+                <li>Cache TTL defaults to 15 minutes.</li>
+                <li>Offline banner updates via connectivity stream.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Feature flags</h3>
+              <p>Flags are served from <span class="mono">/flags</span> and cached locally.</p>
+              <ul>
+                <li>Client polls on an interval (configurable).</li>
+                <li>Use flags for phased rollouts and kill switches.</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Push notifications</h3>
+              <p>Enable by setting <span class="mono">ENABLE_PUSH=true</span> and wiring Firebase/APNS.</p>
+              <ul>
+                <li>Push service is stubbed and ready for provider integration.</li>
+                <li>Permissions flow uses <span class="mono">permission_handler</span>.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section muted" id="deploy">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Deploy & Release</h2>
+            <p>Release governance, rollback strategy, and deployment paths.</p>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Versioning</h3>
+              <p>Use SemVer with build numbers.</p>
+              <pre><code>version: MAJOR.MINOR.PATCH+BUILD</code></pre>
+              <p>See <span class="mono">docs/VERSIONING.md</span> for rules.</p>
+            </div>
+            <div class="card">
+              <h3>Release notes</h3>
+              <p>Template located at <span class="mono">docs/RELEASE_NOTES_TEMPLATE.md</span>.</p>
+              <p>Track highlights, fixes, QA checks, and rollback plan.</p>
+            </div>
+          </div>
+
+          <div class="grid two">
+            <div class="card">
+              <h3>Rollback strategy</h3>
+              <ul>
+                <li>Kill switches via feature flags</li>
+                <li>Phased rollout in stores</li>
+                <li>Patch hotfixes when needed</li>
+              </ul>
+              <p>Details in <span class="mono">docs/ROLLBACK.md</span>.</p>
+            </div>
+            <div class="card">
+              <h3>Docker</h3>
+              <pre><code>docker compose up --build</code></pre>
+              <p>Deploy the backend anywhere with a single container.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="brand">
+            <img src="./assets/logo.svg" alt="Mobile Boilerplate" />
+            <span>Mobile Boilerplate</span>
+          </div>
+          <p>Modern mobile foundation with first-class auth and operational tooling.</p>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#quickstart">Quickstart</a></li>
+            <li><a href="#mobile">Mobile App</a></li>
+            <li><a href="#backend">Backend</a></li>
+            <li><a href="#deploy">Deploy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Links</h4>
+          <ul>
+            <li><a href="https://mobile-boilerplate.lishugupta.in" target="_blank" rel="noreferrer">Live docs URL</a></li>
+            <li><a href="https://github.com/LishuGupta652/Boilerplate-Mobile-App" target="_blank" rel="noreferrer">GitHub repo</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
