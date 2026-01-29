@@ -13,6 +13,8 @@ cp .env.example assets/.env
 flutter pub get
 ```
 
+For Android emulators, set `API_BASE_URL=http://10.0.2.2:4000` in `assets/.env`.
+
 Generate assets:
 ```bash
 dart run flutter_launcher_icons
@@ -38,6 +40,11 @@ Tokens should include `roles` and `permissions` claims. The UI checks permission
 ## Offline + Networking
 - Dio + retry + cache interceptor
 - Offline banner + cached GET responses (Hive)
+
+## Security
+- Tokens stored in `flutter_secure_storage`
+- Automatic token refresh when expired
+- HTTPS enforced in release mode
 
 ## Push Notifications
 Push wiring is stubbed in `PushService`. Enable by:

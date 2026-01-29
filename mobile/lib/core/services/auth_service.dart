@@ -43,7 +43,14 @@ class AuthService {
     );
 
     if (session.isExpired && refreshToken != null) {
-      session = await _refreshToken(refreshToken, idTokenHint: idToken) ?? session;
+      final refreshed = await _refreshToken(refreshToken, idTokenHint: idToken);
+      if (refreshed != null) {
+        session = refreshed;
+      } else {
+        await secureStore.clear();
+        _emit(null);
+        return;
+      }
     }
 
     _emit(session);
@@ -59,7 +66,6 @@ class AuthService {
         additionalParameters: {
           'audience': config.kindeAudience,
         },
-        promptValues: ['login'],
       ),
     );
 
@@ -81,7 +87,7 @@ class AuthService {
 
   Future<void> signOut() async {
     final idToken = _session?.idToken ?? await secureStore.read(_Keys.idToken);
-    if (idToken != null) {
+    if (idToken != null && config.kindeLogoutRedirectUri.isNotEmpty) {
       await _appAuth.endSession(EndSessionRequest(
         idTokenHint: idToken,
         postLogoutRedirectUrl: config.kindeLogoutRedirectUri,
@@ -100,6 +106,10 @@ class AuthService {
       if (refreshed != null) {
         await _persist(refreshed);
         _emit(refreshed);
+      } else {
+        await secureStore.clear();
+        _emit(null);
+        return null;
       }
     }
     return _session?.accessToken;

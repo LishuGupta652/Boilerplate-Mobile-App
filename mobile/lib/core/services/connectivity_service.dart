@@ -5,6 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 class ConnectivityService {
   final Connectivity _connectivity = Connectivity();
   final StreamController<bool> _controller = StreamController<bool>.broadcast();
+  StreamSubscription<ConnectivityResult>? _subscription;
 
   bool _isOnline = true;
 
@@ -18,7 +19,7 @@ class ConnectivityService {
   Future<void> _init() async {
     _isOnline = await _check();
     _controller.add(_isOnline);
-    _connectivity.onConnectivityChanged.listen((result) {
+    _subscription = _connectivity.onConnectivityChanged.listen((result) {
       final online = result != ConnectivityResult.none;
       if (online != _isOnline) {
         _isOnline = online;
@@ -38,6 +39,7 @@ class ConnectivityService {
   }
 
   void dispose() {
+    _subscription?.cancel();
     _controller.close();
   }
 }

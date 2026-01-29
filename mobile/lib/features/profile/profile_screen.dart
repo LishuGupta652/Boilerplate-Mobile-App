@@ -50,6 +50,15 @@ class ProfileScreen extends ConsumerWidget {
           ],
         ),
         const Gap(24),
+        if (session != null) ...[
+          Text('Access', style: Theme.of(context).textTheme.titleMedium),
+          const Gap(12),
+          _AccessCard(
+            roles: session.roles,
+            permissions: session.permissions,
+          ),
+          const Gap(24),
+        ],
         Text('Security & Permissions',
             style: Theme.of(context).textTheme.titleMedium),
         const Gap(12),
@@ -244,6 +253,38 @@ class _ActionTile extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _AccessCard extends StatelessWidget {
+  const _AccessCard({required this.roles, required this.permissions});
+
+  final List<String> roles;
+  final List<String> permissions;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surfaceVariant,
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('Roles', style: Theme.of(context).textTheme.titleSmall),
+          const Gap(6),
+          Text(roles.isNotEmpty ? roles.join(', ') : 'None',
+              style: Theme.of(context).textTheme.bodySmall),
+          const Gap(12),
+          Text('Permissions', style: Theme.of(context).textTheme.titleSmall),
+          const Gap(6),
+          Text(permissions.isNotEmpty ? permissions.join(', ') : 'None',
+              style: Theme.of(context).textTheme.bodySmall),
+        ],
       ),
     );
   }

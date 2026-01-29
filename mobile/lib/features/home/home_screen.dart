@@ -47,7 +47,9 @@ class HomeScreen extends ConsumerWidget {
             Expanded(
               child: _StatCard(
                 label: 'Role',
-                value: 'Member',
+                value: session?.roles.isNotEmpty == true
+                    ? session!.roles.first
+                    : 'Member',
               ),
             ),
           ],

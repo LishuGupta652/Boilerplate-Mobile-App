@@ -76,6 +76,10 @@ final pushServiceProvider = Provider<PushService>((ref) {
   return service;
 });
 
+final pushMessageProvider = StreamProvider<PushMessage>((ref) {
+  return ref.watch(pushServiceProvider).messages;
+});
+
 final themeServiceProvider = Provider<ThemeService>((ref) {
   return ThemeService(localCache: ref.watch(localCacheProvider));
 });

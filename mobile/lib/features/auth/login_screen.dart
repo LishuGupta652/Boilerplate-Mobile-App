@@ -13,6 +13,14 @@ class LoginScreen extends ConsumerWidget {
     final state = ref.watch(loginControllerProvider);
     final isLoading = state.isLoading;
 
+    ref.listen<AsyncValue<void>>(loginControllerProvider, (previous, next) {
+      if (next.hasError) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Login failed. ${next.error}')),
+        );
+      }
+    });
+
     return Scaffold(
       body: Stack(
         children: [

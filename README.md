@@ -22,6 +22,13 @@ flutter pub get
 flutter run -d ios
 ```
 
+## Kinde setup
+- Create an app in Kinde and enable the PKCE flow.
+- Add redirect URIs:
+  - `com.example.mobileapp://login-callback`
+  - `com.example.mobileapp://logout-callback`
+- Add API permissions: `projects:read`, `projects:write`.
+
 ## Feature highlights
 - KindeAuth (OIDC) + RBAC permissions
 - Offline caching (Hive) + connectivity banner
@@ -29,6 +36,7 @@ flutter run -d ios
 - Feature flags (client + backend)
 - Customizable theme + modern UI
 - Splash screen + app icons
+- Secure token storage + refresh flow
 
 ## Docker
 ```bash
